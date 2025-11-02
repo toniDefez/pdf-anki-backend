@@ -1,15 +1,12 @@
- 📘 pdf-anki-backend
+# 📘 pdf-anki-backend
 
-**pdf-anki-backend** es una API escrita en **Python** diseñada como wrapper para generar tarjetas **Anki** automáticamente a partir de fragmentos de texto.  
-La API recibe una petición con información de contexto y una frase, y devuelve una tarjeta completa con traducción, verbo principal, usos y ejemplos.
+**pdf-anki-backend** es una API escrita en **Python** que genera tarjetas **Anki** enriquecidas a partir de fragmentos de texto. Recibe una frase con su contexto y devuelve traducciones, verbo principal, usos y ejemplos listos para importar.
 
 ---
 
 ## 🚀 Descripción
 
-El propósito principal de **pdf-anki-backend** es ayudar a estudiantes de idiomas (por ejemplo, inglés ↔ español) a crear tarjetas Anki enriquecidas con información contextual, sin tener que hacerlo manualmente.
-
-La API toma como entrada una estructura JSON como la siguiente:
+El servicio ayuda a estudiantes de idiomas (por ejemplo, inglés ↔ español) a crear tarjetas Anki sin trabajo manual. Acepta una petición JSON como la siguiente:
 
 ```json
 {
@@ -20,10 +17,11 @@ La API toma como entrada una estructura JSON como la siguiente:
   "format": "text",
   "alternatives": 3
 }
-Y devuelve una tarjeta Anki con formato enriquecido:
+```
 
-json
-Copiar código
+Y responde con una tarjeta Anki con formato enriquecido:
+
+```json
 {
   "front": "I wrote this book because",
   "back": {
@@ -46,3 +44,35 @@ Copiar código
     "contexto": "En este contexto, el autor explica la razón por la que escribió su libro."
   }
 }
+```
+
+---
+
+## ⚙️ Configuración del entorno
+
+- Requiere Python 3.13 o superior. El proyecto usa [uv](https://docs.astral.sh/uv/) como gestor de dependencias y ejecución.
+- Después de clonar el repositorio, instala las dependencias con `uv`:
+
+  ```bash
+  uv sync
+  ```
+
+  También puedes usar el Makefile incluido:
+
+  ```bash
+  make deps
+  ```
+
+---
+
+## 🛠️ Desarrollo local
+
+El Makefile expone estos atajos útiles:
+
+- `make deps`: sincroniza dependencias con `uv sync`.
+- `make add paquete` / `make remove paquete`: agrega o elimina dependencias utilizando `uv`.
+- `make dev`: arranca el servidor con recarga automática (`uv run uvicorn main:app --reload`).
+
+Puedes ejecutar los comandos de `uv` equivalentes de forma directa si lo prefieres.
+
+Una vez levantado, visita `http://127.0.0.1:8000/` o explora la documentación interactiva en `http://127.0.0.1:8000/docs`.
