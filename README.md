@@ -72,7 +72,11 @@ El Makefile expone estos atajos útiles:
 - `make deps`: sincroniza dependencias con `uv sync`.
 - `make add paquete` / `make remove paquete`: agrega o elimina dependencias utilizando `uv`.
 - `make dev`: arranca el servidor con recarga automática (`uv run uvicorn main:app --reload`).
+- `make docs`: inicia el servidor en segundo plano (si no está corriendo) y abre la documentación interactiva (`/docs`) en el navegador.
+- `make stop`: detiene el servidor levantado con `make docs`.
 
 Puedes ejecutar los comandos de `uv` equivalentes de forma directa si lo prefieres.
+
+Los logs del servidor lanzado en segundo plano se guardan en `.make-dev.log`.
 
 Una vez levantado, visita `http://127.0.0.1:8000/` o explora la documentación interactiva en `http://127.0.0.1:8000/docs`.
