@@ -8,5 +8,4 @@ dependencies = [
     "fastapi[standard]>=0.120.4",
 ]
 
-[tool.uv.scripts]
-dev = "uvicorn main:app --reload"
+
